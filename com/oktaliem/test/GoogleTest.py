@@ -1,6 +1,8 @@
 from com.oktaliem.test import BaseTest
+from HtmlTestRunner import HTMLTestRunner
 
 import unittest
+import os
 
 
 class GoogleTest(BaseTest.BaseTest):
@@ -17,4 +19,4 @@ class GoogleTest(BaseTest.BaseTest):
 
 
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main(testRunner=HTMLTestRunner(output=os.getcwd() + '/reports'))
