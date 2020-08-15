@@ -16,14 +16,14 @@ class Scenario3(unittest.TestCase, BaseTest):
         self.logger.assert_testcase_log("test_Scenario3")
         driver = BaseTest().getDriver()
         try:
-            pglogin = Login(driver, self.logger)
-            pglogin.login()
+            loginPage = Login(driver, self.logger)
+            loginPage.login()
 
-            pgMyAccount = MyAccount(driver, self.logger)
-            pgMyAccount.navigateToOrderHistory()
-            pgMyAccount.getHistoricalOrders()
+            myAccountPage = MyAccount(driver, self.logger)
+            myAccountPage.navigateToOrderHistory()
+            myAccountPage.getHistoricalOrders()
 
-            pglogin.logout()
+            loginPage.logout()
         except Exception as e:
             self.logger.assert_step_fail_log(driver, str(e))
 

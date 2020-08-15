@@ -1,9 +1,10 @@
 import unittest
+
+from ddt import ddt, data
+
 from Main.Generic.BaseTest import *
 from Main.Pages import *
-from Main.Utility.logger import *
 from Main.Utility import *
-from ddt import ddt, data
 
 
 def getData(fileName,TestCaseID):
@@ -22,33 +23,32 @@ class Scenario4(unittest.TestCase, BaseTest):
         self.logger.assert_testcase_log("test_Scenario4")
         driver = BaseTest().getDriver()
         try:
-            pgHome = Home(driver,self.logger)
-            pgHome.navigateToTshirts()
+            homePage = Home(driver, self.logger)
+            homePage.navigateToTShirts()
 
-            pgTShirt = TShirt(driver,self.logger)
-            pgTShirt.selectSizesmall()
-            pgTShirt.selectTShirt()
+            tShirtPage = TShirt(driver, self.logger)
+            tShirtPage.selectSizeSmall()
+            tShirtPage.selectTShirt()
 
-            pgFadedTshirt = FadedTShirt(driver,self.logger)
-            pgFadedTshirt.selectQuantity(currentRow['Quntity'])
-            pgFadedTshirt.selectColor(currentRow['Color'])
-            pgFadedTshirt.addItemToCart()
-            pgFadedTshirt.proceedToCheckOut()
+            fadedTShirtPage = FadedTShirt(driver, self.logger)
+            fadedTShirtPage.selectQuantity(currentRow['Quntity'])
+            fadedTShirtPage.selectColor(currentRow['Color'])
+            fadedTShirtPage.addItemToCart()
+            fadedTShirtPage.proceedToCheckOut()
 
-            pgOrder = Order(driver, self.logger)
-            pgOrder.ProceedToCheckout()
+            orderPage = Order(driver, self.logger)
+            orderPage.ProceedToCheckout()
 
-            pglogin = Login(driver, self.logger)
-            pglogin.signIn()
+            loginPage = Login(driver, self.logger)
+            loginPage.signIn()
 
-            # pgOrder.selectDeliveryAddrAsBillingAddr()
-            pgOrder.ProceedToCheckoutInAddress()
-            pgOrder.ProceedToCheckoutInShipping()
-            pgOrder.verifyTermsOfServiceError()
-            pgOrder.acceptTermsOfService()
-            pgOrder.ProceedToCheckoutInShipping()
-            pgOrder.selectPaymentMode(currentRow['Payment Mode'])
-            pgOrder.confirmOrder()
+            orderPage.ProceedToCheckoutInAddress()
+            orderPage.ProceedToCheckoutInShipping()
+            orderPage.verifyTermsOfServiceError()
+            orderPage.acceptTermsOfService()
+            orderPage.ProceedToCheckoutInShipping()
+            orderPage.selectPaymentMode(currentRow['Payment Mode'])
+            orderPage.confirmOrder()
 
         except Exception as e:
             self.logger.assert_step_fail_log(driver, str(e))

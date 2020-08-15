@@ -22,7 +22,7 @@ class TShirt(PageFactory):
         self.chkMedium.click_button()
         self.logger.assert_step_log("PASS",'Successfully Selected size as "Medium".')
 
-    def selectSizesmall(self):
+    def selectSizeSmall(self):
         self.chkSmall.click_button()
         self.logger.assert_step_log("PASS",'Successfully Selected size as "Small".')
 

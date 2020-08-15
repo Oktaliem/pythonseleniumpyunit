@@ -1,30 +1,4 @@
-import getpass
-import platform
-import random
-import socket
-import time
-from pathlib import Path
-
-
-class Singleton(type):
-    _instances = {}
-
-    def __call__(cls, *args, **kwargs):
-        if cls not in cls._instances:
-            cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
-        return cls._instances[cls]
-
-
-class HTMlLogger(metaclass=Singleton):
-    filepath = str(Path(__file__).parent.parent.parent) + "/Reports/LatestTree/report_" + str(
-        time.strftime("%Y%m%d-%H%M%S")) + ".html"
-    f = open(filepath, "a")
-    parentId = ""
-    rowid = ""
-    childId = ""
-
-    def __init__(self):
-        strStartFile = """<html>
+<html>
         	<head>
         	    <meta charset="utf-8">
               <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -369,10 +343,10 @@ class HTMlLogger(metaclass=Singleton):
       </div>
        <div id="envdetails" class="maincontent" style="width: 900px; height: 500px; padding-left: 15%;" >
 	      <p ><h1><b>Environment Details</b></h1></p>
-		  <p><b> OS Name : </b>""" + platform.system() + """</p>
-		  <p><b> OS Release : </b>""" + platform.release() + """ </p>
-		  <p><b> Machine Name :</b> """ + socket.gethostname() + """ </p>
-		  <p><b> User Name : </b>""" + getpass.getuser() + """ </p>
+		  <p><b> OS Name : </b>Linux</p>
+		  <p><b> OS Release : </b>5.4.0-42-generic </p>
+		  <p><b> Machine Name :</b> okta </p>
+		  <p><b> User Name : </b>okta </p>
 	  </div>
 	  <div id="dashboard" class="maincontent" >
 	      <p ><h1><b>Dashboard</b></h1></p>
@@ -382,63 +356,19 @@ class HTMlLogger(metaclass=Singleton):
           <table id="table1" border=1 align=Center class="container">
           <tr>
           <th>Test Case Name</th><th>Status</th><th>Time taken</th>
-  </tr>"""
-        self.f.writelines(strStartFile)
-        self.f.close()
-        # print(inspect.stack()[1][0].f_code.co_name)
-
-    def assert_testcase_log(self, log):
-        self.f = open(self.filepath, "a")
-        self.parentId = random.randrange(0, 6000, 1)
-        tlog = """
-              <tr row-id='""" + str(self.parentId) + """'>
-                <td><b>""" + log + """</b></td><td class="testPASS" id = '""" + str(
-            self.parentId) + """'><img src="img/pass_4.png"/>PASS</td><td class="data">""" + str(
-            time.strftime("%H:%M:%S")) + """</td>
+  </tr>
+              <tr row-id='728'>
+                <td><b>test_Scenario1</b></td><td class="testPASS" id = '728'><img src="img/pass_4.png"/>PASS</td><td class="data">23:51:54</td>
               </tr>
-            """
-        self.f.writelines(tlog)
-        self.f.close()
-
-    def assert_step_log(self, status, log):
-        self.f = open(self.filepath, "a")
-        self.rowid = random.randrange(6000, 200000, 1)
-
-        tLog = """
-                      <tr row-id='""" + str(self.rowid) + """' parent-id='""" + str(self.parentId) + """'>
-                        <td>""" + log + """</td><td class="data"><img src="img/pass_4.png"/>&nbsp """ + status + """</td><td class="data">""" + str(
-            time.strftime("%H:%M:%S")) + """</td>
+            
+                      <tr row-id='16454' parent-id='728'>
+                        <td>Successfully Clicked on Casual Dress in Dress sub-menu.</td><td class="data"><img src="img/pass_4.png"/>&nbsp PASS</td><td class="data">23:51:56</td>
                       </tr>
-                    """
-        self.f.writelines(tLog)
-        self.f.close()
-
-    def assert_step_fail_log(self, driver, log):
-        self.f = open(self.filepath, "a")
-        self.childId = random.randrange(20000, 60000, 1)
-
-        snapPath = self.filepath.replace("html", "png")
-        snapPath = snapPath.replace("LatestTree/report_", "FailureImg/snap_")
-        strP = snapPath.split("/")[len(snapPath.split("/")) - 1]
-        driver.get_screenshot_as_file(snapPath)
-        tLog = """
-                      <tr row-id='""" + str(self.childId) + """' parent-id='""" + str(self.parentId) + """'>
-                        <td>""" + log + """</td><td class="fail" id="fail" parentid='""" + str(
-            self.parentId) + """'><img src="img/fail.png"/>&nbsp FAIL</td><td class="data">""" + str(
-            time.strftime("%H:%M:%S")) + """</td>
+                    
+                      <tr row-id='28918' parent-id='728'>
+                        <td>An exception of type TimeoutException occurred. With Element -: lstSortBy1</td><td class="fail" id="fail" parentid='728'><img src="img/fail.png"/>&nbsp FAIL</td><td class="data">23:52:08</td>
                       </tr>
-                      <tr row-id='""" + str(self.childId + 1) + """' parent-id='""" + str(self.childId) + """'>
-                        <td colspan="3"><img src='../FailureImg/""" + strP + """' width="25%" height="25%"/></td>
+                      <tr row-id='28919' parent-id='28918'>
+                        <td colspan="3"><img src='../FailureImg/snap_20200815-235145.png' width="25%" height="25%"/></td>
                       </tr>
-                    """
-        self.f.writelines(tLog)
-        self.f.close()
-
-    def close_report(self):
-        self.f = open(self.filepath, "r+")
-        data = self.f.read()
-        data = data.replace("</table></div></body></html>", '')
-        self.f.seek(0)
-        self.f.truncate()
-        self.f.writelines(data + "</table></div></body></html>")
-        self.f.close()
+                    </table></div></body></html>

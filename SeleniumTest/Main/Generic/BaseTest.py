@@ -1,7 +1,6 @@
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 
-# import pytest
 from Main.Utility import *
 from Main.Utility import xmlReader as Env
 
@@ -25,7 +24,7 @@ class BaseTest:
     def getDriver(cls):
         return cls.driver
 
-    def TestCaseExit(self, logger):
+    @staticmethod
+    def TestCaseExit(log):
         BaseTest.driver.quit()
-        logger.close_report()
-
+        log.close_report()

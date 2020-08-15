@@ -1,5 +1,4 @@
 from seleniumpagefactory.Pagefactory import PageFactory
-import time
 
 
 class CasualDress(PageFactory):

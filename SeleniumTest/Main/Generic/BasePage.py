@@ -23,7 +23,7 @@ class BasePage:
     }
 
     def __init__(self):
-        pass
+        self.now = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
 
     def __get__(self, instance, owner):
         if not instance:
@@ -32,7 +32,6 @@ class BasePage:
             self.driver = instance.driver
 
     def find_element(self, *loc):
-        # print(loc)
         return self.driver.find_element(*loc)
 
     def __getattr__(self, what):
@@ -67,11 +66,9 @@ class BasePage:
         except AttributeError:
             super(BasePage, self).__getattribute__("method_missing")(what)
 
-    # @classmethod
     def captureLog(self, e, what):
         message = "An exception of type {0} occurred. With Element -:{1!r}".format(type(e).__name__, what)
         self.logger.error(message)
-        self.now = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
         self.driver.get_screenshot_as_file(
             os.path.dirname(os.path.dirname(os.path.dirname(__file__))) + "/TestLogs/Failure-%s.png" % self.now)
         self.driver.quit()

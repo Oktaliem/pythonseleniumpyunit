@@ -1,8 +1,8 @@
+import time
+
 from selenium.webdriver.common.by import By
 from Main.Generic import *
 
-
-# import time
 
 class AdminUserManage(BasePage):
 

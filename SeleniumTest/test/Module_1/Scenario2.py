@@ -7,13 +7,13 @@ from Main.Pages import *
 from Main.Utility import *
 
 
-def getData(fileName,TestCaseID):
-    return ReadLine(fileName,TestCaseID)
+def getData(fileName, TestCaseID):
+    return ReadLine(fileName, TestCaseID)
+
 
 @ddt
 class Scenario2(unittest.TestCase, BaseTest):
     logger = HTMlLogger()  # function_logger(logging.INFO, logging.ERROR)
-
 
     @classmethod
     def setUp(cls):
@@ -24,43 +24,42 @@ class Scenario2(unittest.TestCase, BaseTest):
         self.logger.assert_testcase_log("test_Scenario2")
         driver = BaseTest().getDriver()
         try:
-            pglogin = Login(driver, self.logger)
-            pglogin.login()
+            loginPage = Login(driver, self.logger)
+            loginPage.login()
 
-            pgHome = Home(driver,self.logger)
-            pgHome.navigateToCasualDress()
+            homePage = Home(driver, self.logger)
+            homePage.navigateToCasualDress()
 
-            pgCasualDress = CasualDress(driver,self.logger)
-            pgCasualDress.selectSizeMedium()
-            pgCasualDress.selectCasualDress()
+            casualDressPage = CasualDress(driver, self.logger)
+            casualDressPage.selectSizeMedium()
+            casualDressPage.selectCasualDress()
 
-            pgPrintedDress = PrintedDress(driver,self.logger)
-            pgPrintedDress.selectQuantity(currentRow['Quntity'])
-            pgPrintedDress.addItemToCart()
-            pgPrintedDress.ContinueShopping()
+            printedDressPage = PrintedDress(driver, self.logger)
+            printedDressPage.selectQuantity(currentRow['Quntity'])
+            printedDressPage.addItemToCart()
+            printedDressPage.ContinueShopping()
 
-            pgHome.navigateToTshirts()
+            homePage.navigateToTShirts()
 
-            pgTShirt = TShirt(driver,self.logger)
-            pgTShirt.selectSizesmall()
-            pgTShirt.selectTShirt()
+            tShirtPage = TShirt(driver, self.logger)
+            tShirtPage.selectSizeSmall()
+            tShirtPage.selectTShirt()
 
-            pgFadedTshirt = FadedTShirt(driver,self.logger)
-            pgFadedTshirt.selectQuantity(currentRow['Quntity'])
-            pgFadedTshirt.selectColor(currentRow['Color'])
-            pgFadedTshirt.addItemToCart()
-            pgFadedTshirt.proceedToCheckOut()
+            pgFadedTShirt = FadedTShirt(driver, self.logger)
+            pgFadedTShirt.selectQuantity(currentRow['Quntity'])
+            pgFadedTShirt.selectColor(currentRow['Color'])
+            pgFadedTShirt.addItemToCart()
+            pgFadedTShirt.proceedToCheckOut()
 
-            pgOrder = Order(driver, self.logger)
-            pgOrder.ProceedToCheckout()
-            # pgOrder.selectDeliveryAddrAsBillingAddr()
-            pgOrder.ProceedToCheckoutInAddress()
-            pgOrder.ProceedToCheckoutInShipping()
-            pgOrder.verifyTermsOfServiceError()
-            pgOrder.acceptTermsOfService()
-            pgOrder.ProceedToCheckoutInShipping()
-            pgOrder.selectPaymentMode(currentRow['Payment Mode'])
-            pgOrder.confirmOrder()
+            orderPage = Order(driver, self.logger)
+            orderPage.ProceedToCheckout()
+            orderPage.ProceedToCheckoutInAddress()
+            orderPage.ProceedToCheckoutInShipping()
+            orderPage.verifyTermsOfServiceError()
+            orderPage.acceptTermsOfService()
+            orderPage.ProceedToCheckoutInShipping()
+            orderPage.selectPaymentMode(currentRow['Payment Mode'])
+            orderPage.confirmOrder()
 
         except Exception as e:
             self.logger.assert_step_fail_log(driver, str(e))
