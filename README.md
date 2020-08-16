@@ -59,3 +59,4 @@ The purpose of this repository is for education only.
 - https://medium.com/@asheeshmisra29/web-automation-selenium-webdriver-and-python-getting-started-part-3-a9c07143d36d
 - https://www.lambdatest.com/blog/using-pyunit-for-testing-a-selenium-python-test-suite/
 - https://www.seleniumeasy.com/python/selenium-webdriver-unittest-example
+- https://realpython.com/
