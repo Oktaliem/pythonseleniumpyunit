@@ -2,7 +2,7 @@
 <h4 align="center">SOFTWARE TESTING ENTHUSIAST</h4>
 <br>
 
-# Selenium - Python - Py Unit
+# Selenium - Python - PyUnit
 
 This is Sample Selenium Python (PyUnit) Framework having HTML reporting and Test runner. 
 
