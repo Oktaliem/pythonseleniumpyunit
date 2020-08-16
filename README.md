@@ -43,7 +43,10 @@ This repository is a modification version of original repository [Github](https:
 - Add information how to run the test.
 
 ## Libraries
-- https://wiki.python.org/moin/PyUnit
 - https://pypi.org/project/selenium/
 - https://pypi.org/project/webdriver-manager/
 - https://pypi.org/project/selenium-page-factory/
+
+## Articles
+- https://wiki.python.org/moin/PyUnit
+- https://www.techbeamers.com/selenium-python-test-suite-unittest/
