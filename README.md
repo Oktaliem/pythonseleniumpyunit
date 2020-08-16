@@ -38,7 +38,7 @@ This repository is a modification version of original repository [Github](https:
 
 The purpose of this repository is for education only. 
 
-## Additional features :
+## Additional modification & features :
 - Add webdriver manager capabilities.
 - Remove unnecessary codes.
 - Compatible version to run demo in Linux and MacOS.
