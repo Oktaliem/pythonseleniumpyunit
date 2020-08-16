@@ -4,7 +4,7 @@
 
 # Selenium - Python - PyUnit
 
-This is Sample Selenium Python (PyUnit) Framework having HTML reporting and Test runner. 
+This is Sample of Selenium Python (PyUnit) Framework having HTML reporting and Test runner. 
 
 ### Dependencies
 ```
@@ -37,9 +37,9 @@ Special Thanks to [NayakwandiS](https://github.com/NayakwadiS)
 This repository is a modification version of original repository [Github](https://github.com/NayakwadiS/Selenium_Python_UnitTest_HTML)
 
 Additional features :
-- Add webdriver manager.
+- Add webdriver manager capabilities.
 - Remove unnecessary codes.
-- Compatible run in Linux and MacOS for demo.
+- Compatible version to run demo in Linux and MacOS.
 - Add information how to run the test.
 
 ## Libraries
