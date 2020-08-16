@@ -54,3 +54,8 @@ The purpose of this repository is for education only.
 ## Articles
 - https://wiki.python.org/moin/PyUnit
 - https://www.techbeamers.com/selenium-python-test-suite-unittest/
+- https://medium.com/@asheeshmisra29/web-automation-selenium-webdriver-and-python-getting-started-part-1-157be93049d7
+- https://medium.com/@asheeshmisra29/web-automation-selenium-webdriver-and-python-getting-started-part-2-1acf0ad02bc6
+- https://medium.com/@asheeshmisra29/web-automation-selenium-webdriver-and-python-getting-started-part-3-a9c07143d36d
+- https://www.lambdatest.com/blog/using-pyunit-for-testing-a-selenium-python-test-suite/
+- https://www.seleniumeasy.com/python/selenium-webdriver-unittest-example
