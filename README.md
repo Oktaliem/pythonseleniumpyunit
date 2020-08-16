@@ -43,7 +43,7 @@ The purpose of this repository is for education only.
 - Remove unnecessary codes.
 - Compatible version to run demo in Linux and MacOS.
 - Add information how to run the test (README).
-- Run the test in selenium grid (zalenium) - TO DO
+- Run the test in selenium grid (zalenium or Selenium Grid Docker) - TO DO
 - Video how to run the test - TO DO
 
 ## Libraries
