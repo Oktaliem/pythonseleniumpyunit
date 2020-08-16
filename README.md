@@ -32,9 +32,11 @@ $ python test/testrunner/TestRunner.py -v
 ```
 
 ## References
-Special Thanks to [NayakwandiS](https://github.com/NayakwadiS)
+Special Thanks to [NayakwandiS](https://github.com/NayakwadiS).
 
-This repository is a modification version of original repository [Github](https://github.com/NayakwadiS/Selenium_Python_UnitTest_HTML)
+This repository is a modification version of original repository [Github](https://github.com/NayakwadiS/Selenium_Python_UnitTest_HTML).
+
+The purpose of this repository is for education only. 
 
 ## Additional features :
 - Add webdriver manager capabilities.
