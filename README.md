@@ -42,9 +42,9 @@ The purpose of this repository is for education only.
 - Add webdriver manager capabilities.
 - Remove unnecessary codes.
 - Compatible version to run demo in Linux and MacOS.
-- Add information how to run the test.
+- Add information how to run the test (Readme.md).
 - Run the test in selenium grid (zalenium) - TO DO
-- Video how to run the test.
+- Video how to run the test - TO DO
 
 ## Libraries
 - https://pypi.org/project/selenium/
