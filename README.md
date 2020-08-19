@@ -64,7 +64,8 @@ The purpose of this repository is for education only.
 - https://pypi.org/project/selenium-page-factory/
 
 ## Articles
-- https://wiki.python.org/moin/PyUnit
+- https://wiki.python.org/moin/PyUnit    *****
+- https://docs.python.org/3/library/unittest.html    *****
 - https://www.techbeamers.com/selenium-python-test-suite-unittest/
 - https://medium.com/@asheeshmisra29/web-automation-selenium-webdriver-and-python-getting-started-part-1-157be93049d7
 - https://medium.com/@asheeshmisra29/web-automation-selenium-webdriver-and-python-getting-started-part-2-1acf0ad02bc6
