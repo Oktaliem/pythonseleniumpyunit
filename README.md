@@ -11,24 +11,36 @@ This is a sample of Selenium Python (PyUnit) Framework having HTML reporting and
 $ pip install selenium
 $ pip install webdriver_manager
 $ pip install selenium-page-factory
+
+It depends on your pip version. Currently, I've pip3 installed on my machine.
+So the syntax will be like:
+$ pip3 install selenium
+etc
 ```
 
 ## Run the Test
 ```
+Open Terminal in SeleniumTest folder.
+i.e 
+okta@okta:~/Documents/GitHub/pythonseleniumpyunit/SeleniumTest$
+
 Set environment
 $ export PYTHONPATH=`pwd`   (optional)
 
 Run Test per Class
 i.e.
-$ python test/Module_1/Scenario1.py -v
-$ python test/Module_1/Scenario2.py -v
-$ python test/Module_1/Scenario3.py -v
-$ python test/Module_1/Scenario4.py -v 	
+$ python -m unittest test/module_1/Scenario1.py -v
+$ python -m unittest test/module_1/Scenario2.py -v
+$ python -m unittest test/module_1/Scenario3.py -v
+$ python -m unittest test/module_1/Scenario4.py -v 	
 
 Run Test with Test Runner
-$ python test/testrunner/TestRunner.py -v
+$ python -m unittest test/testrunner/TestRunner.py -v
 
-
+It depends on your python version. Currently, I've python 3.8 installed on my machine.
+So the syntax will be like:
+$ python3 -m unittest test/module_1/Scenario1.py -v
+etc
 ```
 
 ## References
