@@ -21,5 +21,5 @@ def ReadLine(sFileName, sTestID):
     return currentRow
 
 
-def getLastRow(wb):
+def get_last_row(wb):
     return wb.wsheet.max_row

@@ -6,7 +6,7 @@ class XmlReader():
     def __init__(self):
         self.path = str(Path(__file__).parent.parent.parent) + "/testresources/Testxml.xml"
 
-    def getValue(self, VariableName):
+    def get_value(self, VariableName):
         tree = ET.parse(self.path)
         root = tree.getroot()
 

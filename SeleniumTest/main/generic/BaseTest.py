@@ -18,7 +18,7 @@ class BaseTest:
         BaseTest.driver = webdriver.Chrome(ChromeDriverManager().install())
         BaseTest.driver.maximize_window()
         BaseTest.driver.implicitly_wait(5)
-        BaseTest.driver.get(self.EnvironmentValue.getValue("Url"))
+        BaseTest.driver.get(self.EnvironmentValue.get_value("Url"))
 
     @classmethod
     def getDriver(cls):

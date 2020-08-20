@@ -20,18 +20,18 @@ class AdminUserManage(BasePage):
         "lnkSearchResult": (By.NAME, "//table[@id='resultTable']//tr/td/a")
     }
 
-    def searchSystemUser(self, currentRow):
-        self.edtUserName.send_keys(currentRow.get("SystemUser"))
-        self.logger.info("Enter System user name as " + currentRow.get("SystemUser"))
+    def search_system_user(self, current_row):
+        self.edtUserName.send_keys(current_row.get("SystemUser"))
+        self.logger.info("Enter System user name as " + current_row.get("SystemUser"))
 
-        super().selectElementByText(self.lstUserRole, currentRow.get("UserRole"))
-        self.logger.info("Enter System user role as " + currentRow.get("UserRole"))
+        super().selectElementByText(self.lstUserRole, current_row.get("UserRole"))
+        self.logger.info("Enter System user role as " + current_row.get("UserRole"))
 
-        self.edtEmployeeName.send_keys(currentRow.get("EmployeeName"))
-        self.logger.info("Enter employee user name as " + currentRow.get("EmployeeName"))
+        self.edtEmployeeName.send_keys(current_row.get("EmployeeName"))
+        self.logger.info("Enter employee user name as " + current_row.get("EmployeeName"))
 
-        super().selectElementByText(self.lstStatus, currentRow.get("EmpStatus"))
-        self.logger.info("Select Status as " + currentRow.get("EmpStatus"))
+        super().selectElementByText(self.lstStatus, current_row.get("EmpStatus"))
+        self.logger.info("Select Status as " + current_row.get("EmpStatus"))
 
         self.btnSearch.click()
         self.logger.info("Successfully Click on Search button")

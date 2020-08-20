@@ -7,8 +7,8 @@ class Login(PageFactory):
     def __init__(self, driver, logger):
         self.driver = driver
         self.logger = logger
-        self.username = XmlReader().getValue('UserName')
-        self.password = XmlReader().getValue('Password')
+        self.username = XmlReader().get_value('UserName')
+        self.password = XmlReader().get_value('Password')
 
     locators = {
         "btnHomeSignIn": ('Xpath', '//a[contains(text(),"Sign in")]'),
@@ -35,7 +35,7 @@ class Login(PageFactory):
         self.lbWelcome.visibility_of_element_located()
         self.logger.assert_step_log("PASS", 'Successfully Verify User has been Signed In.')
 
-    def signIn(self):
+    def sign_in(self):
         self.edtUserName.set_text(self.username)
         self.logger.assert_step_log("PASS", 'Entered User Name -' + self.username)
 

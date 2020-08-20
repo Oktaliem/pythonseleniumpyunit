@@ -6,6 +6,7 @@ import time
 class MyAccount(PageFactory):
 
     def __init__(self, driver, logger):
+        super().__init__()
         self.driver = driver
         self.logger = logger
 
@@ -15,15 +16,15 @@ class MyAccount(PageFactory):
         "tblOrderHistory": ("XPATH", "//*[@id='order-list']/tbody")
     }
 
-    def navigateToCart(self):
+    def navigate_to_cart(self):
         self.btnCart.click_button()
         self.logger.assert_step_log("PASS", 'Successfully navigated to Cart...')
 
-    def navigateToOrderHistory(self):
+    def navigate_to_order_history(self):
         self.btnOrderHistory.click_button()
         self.logger.assert_step_log("PASS", 'Successfully navigated to Order History...')
 
-    def getHistoricalOrders(self):
+    def get_historical_orders(self):
         rows = self.tblOrderHistory.find_elements(By.TAG_NAME, "tr")  # get all of the rows in the table
         for row in rows:
             col = row.find_elements(By.TAG_NAME, "td")  # note: index start from 0, 1 is col 2

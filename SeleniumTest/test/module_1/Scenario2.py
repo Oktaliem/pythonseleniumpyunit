@@ -7,8 +7,8 @@ from main.pages import *
 from main.utility import *
 
 
-def getData(fileName, TestCaseID):
-    return ReadLine(fileName, TestCaseID)
+def get_data(file_name, test_case_id):
+    return ReadLine(file_name, test_case_id)
 
 
 @ddt
@@ -19,47 +19,47 @@ class Scenario2(unittest.TestCase, BaseTest):
     def setUp(cls):
         BaseTest().TestCaseInit(cls.logger)
 
-    @data(getData("TestData.xlsx", 'test_Scenario2'))
-    def test_Scenario2(self, currentRow):
+    @data(get_data("TestData.xlsx", 'test_Scenario2'))
+    def test_scenario2(self, current_row):
         self.logger.assert_testcase_log("test_Scenario2")
         driver = BaseTest().getDriver()
         try:
-            loginPage = Login(driver, self.logger)
-            loginPage.login()
+            login_page = Login(driver, self.logger)
+            login_page.login()
 
-            homePage = Home(driver, self.logger)
-            homePage.navigateToCasualDress()
+            home_page = Home(driver, self.logger)
+            home_page.navigate_to_casual_dress()
 
-            casualDressPage = CasualDress(driver, self.logger)
-            casualDressPage.selectSizeMedium()
-            casualDressPage.selectCasualDress()
+            casual_dress_page = CasualDress(driver, self.logger)
+            casual_dress_page.select_size_medium()
+            casual_dress_page.select_casual_dress()
 
-            printedDressPage = PrintedDress(driver, self.logger)
-            printedDressPage.selectQuantity(currentRow['Quntity'])
-            printedDressPage.addItemToCart()
-            printedDressPage.ContinueShopping()
+            printed_dress_page = PrintedDress(driver, self.logger)
+            printed_dress_page.select_quantity(current_row['Quntity'])
+            printed_dress_page.add_item_to_cart()
+            printed_dress_page.continue_shopping()
 
-            homePage.navigateToTShirts()
+            home_page.navigate_to_t_shirts()
 
-            tShirtPage = TShirt(driver, self.logger)
-            tShirtPage.selectSizeSmall()
-            tShirtPage.selectTShirt()
+            t_shirt_page = TShirt(driver, self.logger)
+            t_shirt_page.select_size_small()
+            t_shirt_page.select_t_shirt()
 
-            pgFadedTShirt = FadedTShirt(driver, self.logger)
-            pgFadedTShirt.selectQuantity(currentRow['Quntity'])
-            pgFadedTShirt.selectColor(currentRow['Color'])
-            pgFadedTShirt.addItemToCart()
-            pgFadedTShirt.proceedToCheckOut()
+            pg_faded_t_shirt = FadedTShirt(driver, self.logger)
+            pg_faded_t_shirt.select_quantity(current_row['Quntity'])
+            pg_faded_t_shirt.select_color(current_row['Color'])
+            pg_faded_t_shirt.add_item_to_cart()
+            pg_faded_t_shirt.perform_to_check_out()
 
-            orderPage = Order(driver, self.logger)
-            orderPage.ProceedToCheckout()
-            orderPage.ProceedToCheckoutInAddress()
-            orderPage.ProceedToCheckoutInShipping()
-            orderPage.verifyTermsOfServiceError()
-            orderPage.acceptTermsOfService()
-            orderPage.ProceedToCheckoutInShipping()
-            orderPage.selectPaymentMode(currentRow['Payment Mode'])
-            orderPage.confirmOrder()
+            order_page = Order(driver, self.logger)
+            order_page.proceed_to_checkout()
+            order_page.proceed_to_checkout_in_address()
+            order_page.proceed_to_checkout_in_shipping()
+            order_page.verify_terms_of_service_error()
+            order_page.accept_terms_of_service()
+            order_page.proceed_to_checkout_in_shipping()
+            order_page.select_payment_mode(current_row['Payment Mode'])
+            order_page.confirm_order()
 
         except Exception as e:
             self.logger.assert_step_fail_log(driver, str(e))

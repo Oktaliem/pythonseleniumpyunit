@@ -3,7 +3,8 @@ from seleniumpagefactory.Pagefactory import PageFactory
 
 class PrintedDress(PageFactory):
 
-    def __init__(self,driver,logger):
+    def __init__(self, driver, logger):
+        super().__init__()
         self.driver = driver
         self.logger = logger
 
@@ -15,23 +16,23 @@ class PrintedDress(PageFactory):
         "btnProceedToCheckout": ('XPATH', "//a[@title='Proceed to checkout']")
     }
 
-    def selectQuantity(self,iQuantity):
+    def select_quantity(self, iQuantity):
         self.edtQuantity.clear_text()
         self.edtQuantity.set_text(iQuantity)
         self.logger.assert_step_log("PASS",'Successfully Selected Quantity as '+iQuantity+'.')
 
-    def selectSize(self,iSize):
+    def select_size(self, iSize):
         self.lstSize.select_element_by_text(iSize)
         self.logger.assert_step_log("PASS",'Successfully Selected Size as ' + iSize + '.')
 
-    def addItemToCart(self):
+    def add_item_to_cart(self):
         self.btnAddToCart.click_button()
         self.logger.assert_step_log("PASS",'Successfully Added Selected Item to Cart .')
 
-    def ContinueShopping(self):
+    def continue_shopping(self):
         self.btnContinueShopping.click_button()
         self.logger.assert_step_log("PASS",'click on Continue Shopping...')
 
-    def proceedToCheckOut(self):
+    def proceed_to_check_out(self):
         self.btnProceedToCheckout.click_button()
         self.logger.assert_step_log("PASS",'Successfully click on Proceed To Checkout .')

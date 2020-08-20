@@ -12,18 +12,18 @@ class Scenario3(unittest.TestCase, BaseTest):
     def setUp(cls):
         BaseTest().TestCaseInit(cls.logger)
 
-    def test_Scenario3(self):
+    def test_scenario3(self):
         self.logger.assert_testcase_log("test_Scenario3")
         driver = BaseTest().getDriver()
         try:
-            loginPage = Login(driver, self.logger)
-            loginPage.login()
+            login_page = Login(driver, self.logger)
+            login_page.login()
 
-            myAccountPage = MyAccount(driver, self.logger)
-            myAccountPage.navigateToOrderHistory()
-            myAccountPage.getHistoricalOrders()
+            my_account_page = MyAccount(driver, self.logger)
+            my_account_page.navigate_to_order_history()
+            my_account_page.get_historical_orders()
 
-            loginPage.logout()
+            login_page.logout()
         except Exception as e:
             self.logger.assert_step_fail_log(driver, str(e))
 

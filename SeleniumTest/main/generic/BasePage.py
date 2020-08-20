@@ -50,14 +50,14 @@ class BasePage:
                         EC.presence_of_element_located(self.locator_dictionary[what])
                     )
                 except Exception as e:  # (TimeoutException,StaleElementReferenceException,NoSuchElementException,e):
-                    self.captureLog(e, what)
+                    self.capture_log(e, what)
 
                 try:
                     element = WebDriverWait(self.driver, self.timeout).until(
                         EC.visibility_of_element_located(self.locator_dictionary[what])
                     )
                 except (TimeoutException, StaleElementReferenceException) as e:
-                    self.captureLog(e, what)
+                    self.capture_log(e, what)
 
                 # I could have returned element, however because of lazy loading, I am seeking the element before return
                 return self.find_element(*self.locator_dictionary[what])
@@ -66,7 +66,7 @@ class BasePage:
         except AttributeError:
             super(BasePage, self).__getattribute__("method_missing")(what)
 
-    def captureLog(self, e, what):
+    def capture_log(self, e, what):
         message = "An exception of type {0} occurred. With Element -:{1!r}".format(type(e).__name__, what)
         self.logger.error(message)
         self.driver.get_screenshot_as_file(

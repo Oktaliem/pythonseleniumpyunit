@@ -7,8 +7,9 @@ from main.pages import *
 from main.utility import *
 
 
-def getData(fileName,TestCaseID):
-    return ReadLine(fileName,TestCaseID)
+def get_data(file_name, test_case_id):
+    return ReadLine(file_name, test_case_id)
+
 
 @ddt
 class Scenario4(unittest.TestCase, BaseTest):
@@ -18,37 +19,37 @@ class Scenario4(unittest.TestCase, BaseTest):
     def setUp(cls):
         BaseTest().TestCaseInit(cls.logger)
 
-    @data(getData("TestData.xlsx", 'test_Scenario4'))
-    def test_Scenario4(self, currentRow):
+    @data(get_data("TestData.xlsx", 'test_Scenario4'))
+    def test_scenario4(self, current_row):
         self.logger.assert_testcase_log("test_Scenario4")
         driver = BaseTest().getDriver()
         try:
-            homePage = Home(driver, self.logger)
-            homePage.navigateToTShirts()
+            home_page = Home(driver, self.logger)
+            home_page.navigate_to_t_shirts()
 
-            tShirtPage = TShirt(driver, self.logger)
-            tShirtPage.selectSizeSmall()
-            tShirtPage.selectTShirt()
+            t_shirt_page = TShirt(driver, self.logger)
+            t_shirt_page.select_size_small()
+            t_shirt_page.select_t_shirt()
 
-            fadedTShirtPage = FadedTShirt(driver, self.logger)
-            fadedTShirtPage.selectQuantity(currentRow['Quntity'])
-            fadedTShirtPage.selectColor(currentRow['Color'])
-            fadedTShirtPage.addItemToCart()
-            fadedTShirtPage.proceedToCheckOut()
+            faded_t_shirt_page = FadedTShirt(driver, self.logger)
+            faded_t_shirt_page.select_quantity(current_row['Quntity'])
+            faded_t_shirt_page.select_color(current_row['Color'])
+            faded_t_shirt_page.add_item_to_cart()
+            faded_t_shirt_page.perform_to_check_out()
 
-            orderPage = Order(driver, self.logger)
-            orderPage.ProceedToCheckout()
+            order_page = Order(driver, self.logger)
+            order_page.proceed_to_checkout()
 
-            loginPage = Login(driver, self.logger)
-            loginPage.signIn()
+            login_page = Login(driver, self.logger)
+            login_page.sign_in()
 
-            orderPage.ProceedToCheckoutInAddress()
-            orderPage.ProceedToCheckoutInShipping()
-            orderPage.verifyTermsOfServiceError()
-            orderPage.acceptTermsOfService()
-            orderPage.ProceedToCheckoutInShipping()
-            orderPage.selectPaymentMode(currentRow['Payment Mode'])
-            orderPage.confirmOrder()
+            order_page.proceed_to_checkout_in_address()
+            order_page.proceed_to_checkout_in_shipping()
+            order_page.verify_terms_of_service_error()
+            order_page.accept_terms_of_service()
+            order_page.proceed_to_checkout_in_shipping()
+            order_page.select_payment_mode(current_row['Payment Mode'])
+            order_page.confirm_order()
 
         except Exception as e:
             self.logger.assert_step_fail_log(driver, str(e))

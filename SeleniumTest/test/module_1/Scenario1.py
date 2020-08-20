@@ -7,8 +7,8 @@ from main.pages import *
 from main.utility import *
 
 
-def getData(fileName, TestCaseID):
-    return ReadLine(fileName, TestCaseID)
+def get_data(file_name, test_case_id):
+    return ReadLine(file_name, test_case_id)
 
 
 @ddt
@@ -19,29 +19,29 @@ class Scenario1(unittest.TestCase, BaseTest):
     def setUp(cls):
         BaseTest().TestCaseInit(cls.logger)
 
-    @data(getData("TestData.xlsx", 'test_Scenario1'))
-    def test_Scenario1(self, currentRow):
+    @data(get_data("TestData.xlsx", 'test_Scenario1'))
+    def test_scenario1(self, current_row):
         self.logger.assert_testcase_log("test_Scenario1")
         driver = BaseTest().getDriver()
         try:
-            homePage = Home(driver, self.logger)
-            homePage.navigateToCasualDress()
+            home_page = Home(driver, self.logger)
+            home_page.navigate_to_casual_dress()
 
-            casualDressPage = CasualDress(driver, self.logger)
-            casualDressPage.sortBy()
-            casualDressPage.selectSizeMedium()
+            casual_dress_page = CasualDress(driver, self.logger)
+            casual_dress_page.sort_by()
+            casual_dress_page.select_size_medium()
             time.sleep(2)
 
-            casualDressPage.selectCasualDress()
+            casual_dress_page.select_casual_dress()
 
-            printedDressPage = PrintedDress(driver, self.logger)
-            printedDressPage.selectQuantity(currentRow['Quntity'])
-            printedDressPage.addItemToCart()
-            printedDressPage.proceedToCheckOut()
+            printed_dress_page = PrintedDress(driver, self.logger)
+            printed_dress_page.select_quantity(current_row['Quntity'])
+            printed_dress_page.add_item_to_cart()
+            printed_dress_page.proceed_to_check_out()
 
-            orderPage = Order(driver, self.logger)
-            orderPage.deleteSingleItemFromCart()
-            orderPage.verifyEmptyCart()
+            order_page = Order(driver, self.logger)
+            order_page.delete_single_item_from_cart()
+            order_page.verify_empty_cart()
         except Exception as e:
             self.logger.assert_step_fail_log(driver, str(e))
 
